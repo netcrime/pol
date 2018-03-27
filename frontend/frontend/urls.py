@@ -25,6 +25,8 @@ urlpatterns = i18n_patterns(
     url(r'^preview/([0-9]+)$', views.preview, name='preview'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^/en/admin/', include(admin.site.urls)),
+    url(r'^/ru/admin/', include(admin.site.urls)),
 )
 
 urlpatterns.append(url(r'^setup_get_selected_ids$', views.setup_get_selected_ids, name='setup_get_selected_ids'))
