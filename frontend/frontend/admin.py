@@ -4,10 +4,13 @@ from models import Feed, Field, FeedField, Post
 
 class PostAdmin(admin.ModelAdmin):
     model = Post
-    list_display = ('id', 'get_feed', 'created')
+    list_display = ('id', 'get_feed', 'get_feed_link', 'created')
 
     def get_feed(self, obj):
         return obj.feed.uri
+    
+    def get_feed_link(self, obj):
+        return '/feed/%s' % obj.feed.id
 
 
 class FeedAdmin(admin.ModelAdmin):
