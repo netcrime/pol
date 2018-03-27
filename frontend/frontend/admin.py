@@ -3,7 +3,12 @@ from django.contrib import admin
 from models import Feed, Field, FeedField, Post
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'created')
+    model = Post
+    list_display = ('id', 'get_feed', 'created')
+
+    def get_feed(self, obj):
+        return obj.feed.uri
+
 
 class FeedAdmin(admin.ModelAdmin):
     list_display = ('id', 'uri', 'xpath', 'created')
