@@ -14,7 +14,14 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class FeedAdmin(admin.ModelAdmin):
+    model = Feed
     list_display = ('id', 'uri', 'xpath', 'created')
+
+    def get_last_update(self, obj):
+        try:
+            return Post.object.filter(feed=obj).latest()[0].created
+        except:
+            return None
 
 class FieldAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'required')
