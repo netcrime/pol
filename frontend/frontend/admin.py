@@ -17,7 +17,14 @@ class FieldAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'required')
 
 class FeedFieldAdmin(admin.ModelAdmin):
-    list_display = ('id', 'feed', 'field', 'xpath')
+    model = FeedField
+    list_display = ('id', 'get_feed', 'get_field', 'xpath')
+
+    def get_feed(self, obj):
+        return obj.feed.uri
+
+    def get_field(self, obj):
+        return obj.field.name
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Feed, FeedAdmin)
