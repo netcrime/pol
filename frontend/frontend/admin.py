@@ -15,7 +15,7 @@ class PostAdmin(admin.ModelAdmin):
 
 class FeedAdmin(admin.ModelAdmin):
     model = Feed
-    list_display = ('id', 'uri', 'xpath', 'created')
+    list_display = ('id', 'uri', 'xpath', 'get_last_update', 'created')
 
     def get_last_update(self, obj):
         try:
