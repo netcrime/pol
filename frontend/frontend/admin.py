@@ -19,7 +19,7 @@ class FeedAdmin(admin.ModelAdmin):
 
     def get_last_update(self, obj):
         try:
-            return Post.objects.filter(feed=obj).latest()[0].created
+            return Post.objects.filter(feed=obj).latest("created").created
         except:
             return None
 
